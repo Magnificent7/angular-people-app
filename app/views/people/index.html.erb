@@ -2,8 +2,8 @@
   <div ng-controller="peopleCtrl">
 
     <div ng-repeat="person in people">
-      <h3 ng-click="toggleBioVisible(person)">{{ person.name }}</h3>
-      <p ng-if="person.bioVisible">{{ person.bio }}</p>
+      <h3 ng-click="toggleBioVisible(person)" >{{ person.name }}</h3>
+      <p ng-class="{strike: person.bioVisible}">{{ person.bio }}</p>
       <button ng-click="deletePerson($index)">Delete</button>
     </div>
 
