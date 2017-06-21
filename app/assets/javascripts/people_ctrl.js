@@ -19,7 +19,13 @@
         bio: bio,
         bioVisible: true
       };
-      $scope.people.push(newPerson);
+      $http.post('/api/v1/people.json', newPerson).then(function(response){
+        console.log(response.data);
+        $scope.people.push(response.data);
+      }, function(error){
+        console.log(error);
+      });
+
       $scope.newPersonName = null;
       $scope.newPersonBio = null;
     };
