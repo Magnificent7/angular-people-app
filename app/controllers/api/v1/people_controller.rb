@@ -23,4 +23,10 @@ class Api::V1::PeopleController < ApplicationController
     render 'show.json.jbuilder'
   end
 
+  def destroy
+    person = Person.find(params[:id])
+    person.destroy
+    render json: {message: 'Person successfully deleted!'}
+  end
+
 end

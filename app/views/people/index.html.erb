@@ -1,10 +1,15 @@
 <div ng-app="app">
   <div ng-controller="peopleCtrl" ng-init="setup()">
 
+  <h2>Errors:</h2>
+  <ul>
+    <li ng-repeat="error in errors">{{error}}</li>
+  </ul>
+
     <div ng-repeat="person in people">
       <h3 ng-click="toggleBioVisible(person)" >{{ person.name }}</h3>
       <p ng-class="{strike: person.bioVisible}">{{ person.bio }}</p>
-      <button ng-click="deletePerson($index)">Delete</button>
+      <button ng-click="deletePerson(person)">Delete</button>
     </div>
 
     <h4>Add new person:</h4>
