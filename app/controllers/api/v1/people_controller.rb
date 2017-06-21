@@ -14,7 +14,7 @@ class Api::V1::PeopleController < ApplicationController
     if person.save
       redirect_to "/api/v1/people/#{person.id}"
     else
-      render json: {errors: person.errors.full_messages}
+      render json: {errors: person.errors.full_messages}, status: 422
     end
   end
 
