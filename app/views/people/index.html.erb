@@ -17,8 +17,8 @@
 
     <table style="width:100%" border=1>
       <tr>
-        <th ng-click="toggleOrder('name')">Name</th>
-        <th ng-click="toggleOrder('bio')">Bio</th>
+        <th ng-click="toggleOrder('name')">Name {{getSortIcon('name')}}</th>
+        <th ng-click="toggleOrder('bio')">Bio {{getSortIcon('bio')}}</th>
         <th>Delete</th> 
       </tr>
       <tr ng-repeat="person in people | filter: {name: nameFilter} | orderBy: orderAttribute:descending">
