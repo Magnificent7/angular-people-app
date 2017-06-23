@@ -10,10 +10,13 @@
     
     <h4>Total number of people: {{ people.length }}</h4>
 
-    <div>
-      Filter Name: <input ng-model="nameFilter">
-    </div>
+    <datalist id="names">
+      <option ng-repeat="person in people">{{person.name}}</option>
+    </datalist>
 
+    <div>
+      Filter Name: <input ng-model="nameFilter" list="names">
+    </div>
 
     <table style="width:100%" border=1>
       <tr>
