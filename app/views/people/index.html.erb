@@ -1,30 +1,37 @@
 <div ng-app="app">
   <div ng-controller="peopleCtrl" ng-init="setup()">
 
-  <h2>Errors:</h2>
-  <ul>
-    <li ng-repeat="error in errors">{{error}}</li>
-  </ul>
-
-    Filter Name: <input ng-model="nameFilter">
+    <div ng-if="errors">
+      <h4>Errors:</h4>
+      <ul>
+        <li ng-repeat="error in errors">{{error}}</li>
+      </ul>
+    </div>
+    
+    <h4>Total number of people: {{ people.length }}</h4>
 
     <div>
-      <button ng-click="toggleOrder('name')">Order by Name</button>
-      <button ng-click="toggleOrder('bio')">Order by Bio</button>
+      Filter Name: <input ng-model="nameFilter">
     </div>
 
-    <div ng-repeat="person in people | filter: {name: nameFilter} | orderBy: orderAttribute:descending">
-      <h3 ng-click="toggleBioVisible(person)" >{{ person.name }}</h3>
-      <p ng-class="{blueText: person.bioVisible}">{{ person.bio }}</p>
-      <button ng-click="deletePerson(person)">Delete</button>
-    </div>
+
+    <table style="width:100%" border=1>
+      <tr>
+        <th ng-click="toggleOrder('name')">Name</th>
+        <th ng-click="toggleOrder('bio')">Bio</th>
+        <th>Delete</th> 
+      </tr>
+      <tr ng-repeat="person in people | filter: {name: nameFilter} | orderBy: orderAttribute:descending">
+        <td>{{ person.name }}</td>
+        <td>{{ person.bio }}</td> 
+        <td><button ng-click="deletePerson(person)">Delete</button></td>
+      </tr>
+    </table>
 
     <h4>Add new person:</h4>
     <label>Name:</label><input ng-model="newPersonName">
     <label>Bio:</label><input ng-model="newPersonBio">
     <button ng-click="addNewPerson(newPersonName, newPersonBio)">Add Person</button>
-
-    <h4>Total number of people:</h4>{{ people.length }}
 
   </div>  
 </div>
