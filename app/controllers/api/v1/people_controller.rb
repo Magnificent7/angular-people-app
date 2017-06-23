@@ -13,8 +13,10 @@ class Api::V1::PeopleController < ApplicationController
     )
     if person.save
       redirect_to "/api/v1/people/#{person.id}"
+      # response: sending back a person object
     else
       render json: {errors: person.errors.full_messages}, status: 422
+      #response: sending back a json object with 1 key of errors
     end
   end
 

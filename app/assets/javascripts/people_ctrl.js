@@ -19,11 +19,9 @@
         bioVisible: true
       };
       $http.post("/api/v1/people.json", newPerson).then(function(response){
-        console.log("RESPONSE");
         console.log(response.data);
         $scope.people.push(response.data);
       }, function(error) {
-        console.log("ERROR");
         console.log(error);
         $scope.errors = error.data.errors;
       });
