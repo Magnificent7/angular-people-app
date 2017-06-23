@@ -7,7 +7,13 @@
   </ul>
 
     Filter Name: <input ng-model="nameFilter">
-    <div ng-repeat="person in people | filter: nameFilter">
+
+    <div>
+      <button ng-click="toggleOrder('name')">Order by Name</button>
+      <button ng-click="toggleOrder('bio')">Order by Bio</button>
+    </div>
+
+    <div ng-repeat="person in people | filter: {name: nameFilter} | orderBy: orderAttribute:descending">
       <h3 ng-click="toggleBioVisible(person)" >{{ person.name }}</h3>
       <p ng-class="{blueText: person.bioVisible}">{{ person.bio }}</p>
       <button ng-click="deletePerson(person)">Delete</button>
